@@ -13,7 +13,7 @@ import { createOptions, delay, IRefreshable } from '.';
 
 type loadDelegate = (connectionString: string, options?: any) => Promise<IRefreshable>;
 
-describe('refresh', () => {
+describe('https://github.com/Azure/AppConfiguration-JavaScriptProvider/issues/137', () => {
 
   const baseUrl = 'http://azconfig.me.local'; //fake url
 
@@ -57,7 +57,7 @@ describe('refresh', () => {
       ['v1.0.0-preview4', v1_0_0_preview4.load],
       ['v1.0.0-preview3', v1_0_0_preview3.load],
     ])
-    ('honors cooldown in %p', 
+    ('honors refresh-cooldown in %p', 
     async (_, load: loadDelegate) => {
     
       const settings = await load(`Endpoint=${baseUrl};Id=id;Secret=secret`, createOptions(options));
