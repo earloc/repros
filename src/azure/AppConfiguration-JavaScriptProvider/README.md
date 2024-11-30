@@ -3,7 +3,7 @@
 ## https://github.com/Azure/AppConfiguration-JavaScriptProvider/issues/137
 Potential request spamming after initial cooldown surpassed
 
-> see [#137.spec.ts](#137.spec.ts)
+> see [#137.spec.ts](%23137.spec.ts)
 
 Showcases an issue, where refresh-intervals get ignored, after the intial refresh-interval has been surpassed and no changes occur on watched sentinel-keys.
 ```
