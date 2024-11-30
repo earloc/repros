@@ -9,8 +9,12 @@
   "author": "earloc@live.de",
   "license": "MIT",
   "dependencies": {
-    "@azure/app-configuration-provider-1_0_0_preview_4": "npm:@azure/app-configuration-provider@1.0.0-preview.4",
     "@azure/app-configuration-provider-1_1_2": "npm:@azure/app-configuration-provider@1.1.2",
+    "@azure/app-configuration-provider-1_1_0": "npm:@azure/app-configuration-provider@1.1.0",
+    "@azure/app-configuration-provider-1_0_1": "npm:@azure/app-configuration-provider@1.0.1",
+    "@azure/app-configuration-provider-1_0_0": "npm:@azure/app-configuration-provider@1.0.0",
+    "@azure/app-configuration-provider-1_0_0_preview_4": "npm:@azure/app-configuration-provider@1.0.0-preview.4",
+    "@azure/app-configuration-provider-1_0_0_preview_3": "npm:@azure/app-configuration-provider@1.0.0-preview.3",
     "@types/util.promisify": "^1.0.9",
     "axios": "^1.7.8",
     "tsx": "^4.19.2"
