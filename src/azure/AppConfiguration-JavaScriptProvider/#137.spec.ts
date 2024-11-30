@@ -66,6 +66,7 @@ describe('https://github.com/Azure/AppConfiguration-JavaScriptProvider/issues/13
       for(let i = 0; i < 10; i++) {
         await settings.refresh();
       }
+      expect(getSentinelRequestCount).toBe(0);
 
       // after initial cooldown, refreshing should only be done once every 'refreshIntervalInMs'
       // this was broken in 1.0.0-preview4, as this version started to spam azconfig for changes on the sentinel-keys
