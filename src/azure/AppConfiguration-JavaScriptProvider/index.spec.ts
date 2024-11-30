@@ -2,40 +2,8 @@ import nock from 'nock';
 
 import * as v1_0_0_preview4 from '@azure/app-configuration-provider-1_0_0_preview_4';
 import * as v1_1_2 from '@azure/app-configuration-provider-1_1_2';
+import { createOptions, delay, IRefreshable } from '.';
 
-function delay(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-export interface IOptions {
-  sentinelKeyName: string,
-  refreshIntervalInMs: number,
-  keyFilter: string
-  labelFilter: string
-}
-
-function createOptions(options: IOptions) {
-  return {
-      clientOptions: {
-          allowInsecureConnection: true
-      },
-      selectors: [
-          {
-              keyFilter: options.keyFilter,
-              labelFilter: options.labelFilter
-          }
-      ],
-      refreshOptions: {
-          enabled: true,
-          refreshIntervalInMs: options.refreshIntervalInMs,
-          watchedSettings: [{ key: options.sentinelKeyName, label: options.labelFilter }]
-      }
-  }
-}
-
-interface IRefreshable {
-  refresh() : Promise<void>
-}
 type loadDelegate = (connectionString: string, options?: any) => Promise<IRefreshable>;
 
 describe('refresh', () => {
@@ -52,6 +20,7 @@ describe('refresh', () => {
   let getSentinelRequestCount = 0;
 
   beforeEach( () => {
+
     //mock initial requests when calling 'load'
     nock(baseUrl)
       .persist()
@@ -74,10 +43,10 @@ describe('refresh', () => {
   })
 
   test.each([
-      ['1.1.2', v1_1_2.load],
-      ['1.0.0-preview4', v1_0_0_preview4.load] 
+      ['v1.1.2', v1_1_2.load],
+      ['v1.0.0-preview4', v1_0_0_preview4.load] 
     ])
-    ('honors cooldown in v%p', 
+    ('honors cooldown in %p', 
     async (_, load: loadDelegate) => {
     
       const settings = await load(`Endpoint=${baseUrl};Id=id;Secret=secret`, createOptions(options));
