@@ -39,6 +39,7 @@ public class UnitTest1
         Assert.Equal(13.37, responseNumberAsString.Double); //is null at runtime
     }
 
+    // repro for https://github.com/microsoft/kiota/issues/6667
     [Fact]
     public async Task CanHandleNumbersAsStrings()
     {
