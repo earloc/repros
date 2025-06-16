@@ -1,0 +1,1 @@
+reproduction sample for https://github.com/microsoft/kiota/issues/6667
